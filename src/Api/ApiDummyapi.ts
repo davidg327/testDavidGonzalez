@@ -44,3 +44,19 @@ export function updateUser(Id: string, values: any) {
       });
   });
 }
+
+export function deleteUser(Id: string) {
+  return new Promise((resolve, reject) => {
+    axios
+      .delete(`${URL}/user/${Id}`, {
+        headers: {'app-id': '63473330c1927d386ca6a3a5'},
+      })
+      .then(function (response) {
+        console.log(response.data);
+        resolve(response.data);
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+  });
+}

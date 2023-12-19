@@ -2,7 +2,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { useEffect, useState } from "react";
-import { getUsers } from "../../Api/ApiDummyapi";
+import { deleteUser, getUsers } from "../../Api/ApiDummyapi";
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { ListUsers } from "./Components/ListUsers";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
@@ -26,25 +26,18 @@ export const HomeScreen = () => {
     }
   };
 
-  const deleteItem = (rowMap, rowKey) => {
-    /*closeRow(rowMap, rowKey);
-    const newData = [...this.state.itemList];
-    const prevIndex = this.state.itemList
-      .findIndex(item => item.key === rowKey);
-    newData.splice(prevIndex, 1);
-    setUsers(newData);*/
-  };
-
-  const onRowOpen = rowKey => {
-    console.log('Opened row with key:', rowKey);
+  const deleteItem = async (item: any) => {
+    await deleteUser(item.id);
+    let newUsers = users.filter(user => user.id !== item.id);
+    setUsers(newUsers);
   };
 
   const renderItem = rowData => (
     <ListUsers item={rowData.item} />
   );
 
-  const renderHiddenItem = (rowData, rowMap) => (
-    <RenderHidden />
+  const renderHiddenItem = (rowData) => (
+    <RenderHidden deleteItem={() => deleteItem(rowData.item)} />
   );
 
   return (
@@ -59,7 +52,6 @@ export const HomeScreen = () => {
         previewRowKey={'0'}
         previewOpenValue={-40}
         previewOpenDelay={3000}
-        onRowDidOpen={onRowOpen}
         scrollEnabled={true}
         contentContainerStyle={{paddingBottom: 150}}
       />
