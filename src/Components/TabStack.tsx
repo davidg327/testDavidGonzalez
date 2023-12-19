@@ -3,6 +3,7 @@ import { HomeScreen } from "../Screen/Home/Home";
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { StyleSheet } from "react-native";
 import TabBarCustom from "./TabBarCustom";
+import { DetailUser } from "../Screen/DetailUser/DetailUser";
 
 const styles = StyleSheet.create({
   tabBar: {

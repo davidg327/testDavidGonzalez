@@ -49,7 +49,6 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Finanzauto</Text>
       <Header />
       <Text style={styles.subtitle}>Consulta y Registro de usuarios</Text>
       <SwipeListView
@@ -65,7 +64,7 @@ export const HomeScreen = () => {
         contentContainerStyle={{paddingBottom: 150}}
       />
       <View style={styles.containerAdd}>
-        <FontAwesome name={'plus'} color={'white'}/>
+        <FontAwesome name={'plus'} color={'white'} size={20}/>
       </View>
     </View>
   )

@@ -1,15 +1,23 @@
 import React from 'react';
-import { Image, Text, View } from "react-native";
+import { Image, Pressable, Text, View } from "react-native";
 import styles from "./styles";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import { useNavigation } from "@react-navigation/native";
 
 interface IListUsers {
   item: any;
 }
 
 export const ListUsers: React.FC<IListUsers> = ({item}) => {
+
+  const navigation = useNavigation()
+
   return (
-    <View
+    <Pressable
+      onPress={() =>
+        navigation.navigate('DetailUser', {
+          id: item.id,
+      })}
       style={styles.itemContainer}
     >
       <Image source={{uri: item.picture}} style={styles.image}/>
@@ -38,6 +46,6 @@ export const ListUsers: React.FC<IListUsers> = ({item}) => {
           />
         </View>
       </View>
-    </View>
+    </Pressable>
   )
 };

@@ -7,13 +7,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#eaeaea',
   },
-  title: {
-    color: '#166D6B',
-    fontSize: wp(12),
-    fontWeight: 'bold',
-    marginTop: hp(2),
-    marginLeft: wp(6),
-  },
   subtitle: {
     color: '#4f4f4f',
     fontSize: wp(8),
